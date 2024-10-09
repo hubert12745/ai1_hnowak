@@ -1,0 +1,63 @@
+/* Stylizacja dla obrazu, aby był responsywny */
+.responsive-img {
+    width: 100%; /* Obrazek zajmuje całą szerokość kontenera */
+    height: auto; /* Zachowanie proporcji obrazu */
+    max-width: 100%; /* Zapobiega rozciągnięciu obrazka ponad jego naturalne wymiary */
+}
+
+/* Stylizacja dla nagłówków */
+h1 {
+    font-size: 2.5em; /* Zwiększenie rozmiaru nagłówka H1 */
+    margin: 20px 0; /* Marginesy góra/dół dla przestrzeni */
+    text-align: center; /* Wyśrodkowanie tekstu */
+}
+
+h2 {
+    font-size: 2em; /* Zmniejszenie H2 względem H1 */
+    margin: 15px 0; /* Mniejsze marginesy niż dla H1 */
+    text-align: center; /* Wyśrodkowanie podtytułu */
+}
+
+h3 {
+    font-size: 1.5em; /* Nagłówek H3 dla sekcji */
+    margin: 10px 0; /* Marginesy góra/dół */
+    color: #333; /* Przyciemniony kolor nagłówka */
+}
+
+/* Stylizacja dla akapitów */
+p {
+    font-size: 1.1em; /* Lekko większa czcionka dla akapitów */
+    line-height: 1.6; /* Odstępy między liniami tekstu */
+    margin-bottom: 20px; /* Margines dolny między akapitami */
+    text-align: justify; /* Wyjustowanie tekstu */
+    color: #444; /* Przyjemny szary kolor tekstu */
+}
+
+/* Stylizacja dla listy */
+ul {
+    margin: 20px 0; /* Marginesy góra/dół */
+    padding-left: 40px; /* Wcięcie dla punktów listy */
+}
+
+ul li {
+    font-size: 1.1em; /* Rozmiar tekstu dla punktów listy */
+    margin-bottom: 10px; /* Odstępy między punktami listy */
+    color: #555; /* Kolor tekstu punktów */
+}
+
+/* Stylizacja stopki */
+footer {
+    text-align: center; /* Wyśrodkowanie tekstu w stopce */
+    margin-top: 40px; /* Większy margines od treści */
+    font-size: 0.9em; /* Mniejszy rozmiar czcionki */
+    color: #777; /* Przygaszony kolor tekstu */
+}
+
+footer a {
+    text-decoration: none; /* Brak podkreślenia linku */
+    color: #007bff; /* Kolor linku */
+}
+
+footer a:hover {
+    text-decoration: underline; /* Podkreślenie linku po najechaniu */
+}

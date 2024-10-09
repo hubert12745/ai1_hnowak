@@ -1,0 +1,113 @@
+/* Ogólne ustawienia dla strony */
+body {
+    font-family: 'Arial', sans-serif; /* Ustawienie czcionki dla całej strony */
+    margin: 0; /* Usunięcie domyślnych marginesów */
+    padding: 0; /* Usunięcie domyślnych odstępów */
+    background-color: #f4f4f9; /* Delikatne jasne tło */
+    color: #333; /* Domyślny kolor tekstu */
+}
+
+/* Stylizowanie dla obrazu, aby był responsywny */
+.responsive-img {
+    width: 100%; /* Obrazek zajmuje całą szerokość kontenera */
+    height: auto; /* Zachowanie proporcji obrazu */
+    max-width: 100%; /* Zapobiega rozciągnięciu obrazka ponad jego naturalne wymiary */
+    display: block; /* Usunięcie odstępów pod obrazem */
+    margin: 0 auto; /* Wyśrodkowanie obrazka */
+}
+
+/* Stylizacja dla nagłówków */
+h1 {
+    font-size: 2.5em; /* Zwiększenie rozmiaru nagłówka H1 */
+    margin: 20px 0; /* Marginesy góra/dół dla przestrzeni */
+    text-align: center; /* Wyśrodkowanie tekstu */
+    color: #2c3e50; /* Ciemny odcień koloru */
+    text-transform: uppercase; /* Zmiana na wielkie litery */
+    letter-spacing: 2px; /* Rozsunięcie liter */
+}
+
+h2 {
+    font-size: 2em; /* Zmniejszenie H2 względem H1 */
+    margin: 15px 0; /* Mniejsze marginesy niż dla H1 */
+    text-align: center; /* Wyśrodkowanie podtytułu */
+    color: #34495e; /* Inny, ciemniejszy kolor */
+}
+
+h3 {
+    font-size: 1.5em; /* Nagłówek H3 dla sekcji */
+    margin: 10px 0; /* Marginesy góra/dół */
+    color: #2c3e50; /* Przyciemniony kolor nagłówka */
+    border-bottom: 2px solid #3498db; /* Podkreślenie nagłówka linią */
+    padding-bottom: 5px; /* Odstęp od dolnej krawędzi */
+}
+
+/* Stylizacja dla akapitów */
+p {
+    font-size: 1.2em; /* Lekko większa czcionka dla akapitów */
+    line-height: 1.7; /* Odstępy między liniami tekstu */
+    margin-bottom: 20px; /* Margines dolny między akapitami */
+    text-align: justify; /* Wyjustowanie tekstu */
+    color: #555; /* Przyjemny szary kolor tekstu */
+    padding: 0 15px; /* Delikatne wcięcie od krawędzi */
+}
+
+/* Stylizacja dla listy */
+ul {
+    margin: 20px 0; /* Marginesy góra/dół */
+    padding-left: 40px; /* Wcięcie dla punktów listy */
+}
+
+ul li {
+    font-size: 1.1em; /* Rozmiar tekstu dla punktów listy */
+    margin-bottom: 10px; /* Odstępy między punktami listy */
+    color: #555; /* Kolor tekstu punktów */
+    list-style-type: square; /* Styl punktów listy */
+}
+
+/* Stylizacja nagłówka (header) */
+header {
+    background-color: #3498db; /* Tło nagłówka */
+    padding: 20px 0; /* Góra/dół margines w nagłówku */
+    text-align: center; /* Wyśrodkowanie zawartości w nagłówku */
+    color: white; /* Kolor tekstu w nagłówku */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Delikatny cień pod nagłówkiem */
+}
+
+/* Stylizacja stopki */
+footer {
+    text-align: center; /* Wyśrodkowanie tekstu w stopce */
+    margin-top: 40px; /* Większy margines od treści */
+    font-size: 0.9em; /* Mniejszy rozmiar czcionki */
+    color: #777; /* Przygaszony kolor tekstu */
+    background-color: #2c3e50; /* Ciemne tło stopki */
+    padding: 20px; /* Wewnętrzne marginesy w stopce */
+}
+
+footer a {
+    text-decoration: none; /* Brak podkreślenia linku */
+    color: #ecf0f1; /* Jasny kolor linku */
+}
+
+footer a:hover {
+    text-decoration: underline; /* Podkreślenie linku po najechaniu */
+}
+
+/* Dodatkowa stylizacja dla linków */
+a {
+    color: #3498db; /* Kolor linków */
+    text-decoration: none; /* Brak podkreślenia */
+}
+
+a:hover {
+    text-decoration: underline; /* Podkreślenie po najechaniu */
+}
+
+/* Stylizacja dla main (główna część strony) */
+main {
+    padding: 20px; /* Wewnętrzne marginesy */
+    max-width: 1200px; /* Maksymalna szerokość treści */
+    margin: 0 auto; /* Wyśrodkowanie całej treści */
+    background-color: #fff; /* Białe tło treści */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* Cień wokół treści */
+    border-radius: 8px; /* Zaokrąglone rogi kontenera */
+}
