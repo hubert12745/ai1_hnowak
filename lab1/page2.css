@@ -1,220 +1,336 @@
-/* Ogólne ustawienia dla strony */
-body {
-    font-family: 'Arial', sans-serif; /* Ustawienie czcionki dla całej strony */
-    margin: 0; /* Usunięcie domyślnych marginesów */
-    padding: 0; /* Usunięcie domyślnych odstępów */
-    background-color: #f4f4f9; /* Delikatne jasne tło */
-    color: #333; /* Domyślny kolor tekstu */
-}
-/* Stylizowanie dla obrazu, aby był responsywny */
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;700&display=swap');
 
-.responsive-img {
-    width: 100%; /* Obrazek zajmuje całą szerokość kontenera */
-    height: auto; /* Zachowanie proporcji obrazu */
-    max-width: 100%; /* Zapobiega rozciągnięciu obrazka ponad jego naturalne wymiary */
-    display: block; /* Usunięcie odstępów pod obrazem */
-    margin: 0 auto; /* Wyśrodkowanie obrazka */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
-/* Hamburger menu styles */
-.menu-icon {
-    font-size: 30px;
-    cursor: pointer;
-    display: none; /* Hide the icon by default */
-    position: absolute; /* Position the icon absolutely */
-    top: 20px; /* Adjust the top position */
-    right: 20px; /* Adjust the right position */
-    z-index: 2; /* Ensure the icon is above other elements */
+html, body {
+    height: 100%;
+    font-family: 'Nunito Sans', sans-serif;
+    color: #333;
+    background-color: #f9f9f9;
+    scroll-behavior: smooth;
 }
 
-#menu-toggle {
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+header {
+    background-color: #ffffff;
+    padding: 10px 20px;
+    border-bottom: 1px solid #e0e0e0;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+header h1 {
+    font-size: 2.5em;
+    color: #007BFF;
+    animation: slideDown 1s ease-in-out;
+    margin-top: 60px;
+}
+
+header h2 {
+    font-size: 1.5em;
+    color: #6c757d;
+    margin: 5px 0;
+    animation: fadeIn 2s ease-in-out;
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.menu-toggle, .menu-icon {
     display: none;
 }
 
-.menu {
+nav ul {
+    list-style: none;
     display: flex;
     justify-content: center;
-    align-items: center;
-
 }
 
-.menu ul {
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    position: relative;
+    text-decoration: none;
+    color: #007BFF;
+    font-weight: 700;
+    padding: 5px;
+    transition: color 0.3s ease;
+}
+
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 5px;
+    width: 0;
+    height: 2px;
+    background-color: #007BFF;
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+nav ul li a:hover {
+    color: #0056b3;
+}
+
+nav ul li a:hover::after {
+    width: 100%;
+}
+
+main {
+    background-image: url("images/background2.webp");
+    background-size: cover;
+    flex: 1;
+    padding: 60px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
     display: flex;
+    flex-direction: column;
+}
+
+main > section {
+    order: 0;
+}
+
+main > section#modele {
+    order: 1;
+}
+
+section {
+    margin-bottom: 60px;
+    opacity: 0;
+    animation: fadeUp 1s forwards;
+    animation-delay: 0.5s;
+}
+
+section#marki {
+    padding: 20px;
+    border: #007BFF 2px solid;
+    border-radius: 10px;
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+section h3 {
+    font-size: 2em;
+    color: #007BFF;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+section h3::after {
+    content: '';
+    width: 60px;
+    height: 4px;
+    background-color: #007BFF;
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+}
+
+section p {
+    font-size: 1.1em;
+    line-height: 1.6;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+section ul {
+    list-style: disc inside;
+    margin-left: 20px;
+}
+
+section ul li {
+    margin-bottom: 10px;
+    font-size: 1.1em;
+}
+
+#modele {
+    display: flex;
+    flex-direction: column;
+}
+
+#modele .gallery {
+    order: 2;
+}
+
+#modele ul {
     list-style: none;
     padding: 0;
-    margin: 0;
+    margin: 0 0 20px 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
 }
 
-.menu ul li {
-    border-radius: 15px 50px 30px;
-    padding: 20px 35px;
-    margin: 0;
-    list-style-type: none;
+#modele ul li {
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    padding: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    font-size: 1em;
+    color: #555;
+    line-height: 1.6;
 }
 
-.menu ul li a {
-    text-decoration: none;
-    color: #000000;
+#modele ul li:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+#modele ul li strong {
+    display: block;
+    font-size: 1.5em;
+    color: #007BFF;
+    margin-bottom: 10px;
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    margin-top: 40px;
+    gap: 10px;
+}
+
+.gallery-item {
+    overflow: hidden;
+    position: relative;
+    border-radius: 10px 50px 10px 50px;
+    border: 1px solid #000000;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px;
+}
+
+.gallery-item:nth-child(2) {
+    border-radius: 50px 10px 50px 10px;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.5s ease, filter 0.5s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.4);
+    filter: brightness(0.8);
+}
+
+.gallery-item::after {
+    content: attr(alt);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.7), transparent);
+    color: #fff;
+    padding: 10px;
     font-size: 1.2em;
+    opacity: 0;
+    transition: opacity 0.5s ease;
 }
-.menu ul li:hover {
-    background-color: #3498db;
-    transition: background-color 1s;
 
+.gallery-item:hover::after {
+    opacity: 1;
+}
+
+footer {
+    background-color: #ffffff;
+    padding: 20px;
+    text-align: center;
+    border-top: 1px solid #e0e0e0;
+}
+
+footer p {
+    color: #777;
 }
 
 @media (max-width: 768px) {
+
+    header {
+        position: sticky;
+    }
+    header h1 {
+        font-size: 2em;
+        margin-top: 20px;
+    }
     .menu-icon {
-        display: block; /* Show the icon on smaller screens */
-    }
-
-    .menu {
-        display: none;
-        flex-direction: column;
-        align-items: center;
-        background-color: #3498db;
+        font-size: 0;
         position: absolute;
-        top: 60px; /* Adjust the top position to avoid overlap */
-        left: 0;
-        width: 100%;
-        z-index: 1; /* Ensure the menu is below the icon */
+        top: 15px;
+        right: 20px;
+        cursor: pointer;
     }
+    .menu-icon::before {
+        content: "\2630";
+        font-size: 1.5em;
+        color: #007BFF;
+    }
+    nav ul {
+        /*flex-direction: column;*/
+        align-items: center;
 
-    #menu-toggle:checked + .menu-icon + .menu {
+    }
+    .menu-toggle:checked + .menu-icon + nav ul {
         display: flex;
     }
-
-    #menu-toggle:checked + .menu-icon {
-        display: block; /* Ensure the icon remains visible when the menu is open */
+    nav ul li {
+        margin: 10px 0;
     }
-
-    .menu ul {
-        flex-direction: column;
-        position: relative;
-        width:  50%;
-        text-align: center;
-        padding: 0;
-        margin: 0;
-
+    .menu-toggle {
+        display: none;
     }
-
-    .menu ul li {
-        border-radius: 25px;
-        padding: 20px 35px;
-        margin: 0;
-        list-style-type: none;
+    main {
+        padding: 40px 15px;
     }
-    .menu ul li:hover {
-        background-color: #77b6dd;
-        transition: background-color 1s;
+    section h3 {
+        font-size: 1.8em;
     }
-    .menu ul li a {
-        color: #ffffff;
+    section p, section ul li {
+        font-size: 1em;
     }
-}
-
-/* Stylizacja nagłówka (header) */
-header {
-    background-color: #3498db; /* Tło nagłówka */
-    padding: 20px 0; /* Góra/dół margines w nagłówku */
-    text-align: center; /* Wyśrodkowanie zawartości w nagłówku */
-    color: #282828; /* Kolor tekstu w nagłówku */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Delikatny cień pod nagłówkiem */
-    position: relative; /* Ensure the header is positioned relative to its contents */
-    z-index: 0; /* Ensure the header is below the menu icon */
-}
-
-/* Stylizacja dla nagłówków */
-h1 {
-    font-family: Georgia;
-    font-size: 2.5em; /* Zwiększenie rozmiaru nagłówka H1 */
-    margin: 20px 0; /* Marginesy góra/dół dla przestrzeni */
-    text-align: center; /* Wyśrodkowanie tekstu */
-    color: #000000; /* Ciemny odcień koloru */
-    text-transform: uppercase; /* Zmiana na wielkie litery */
-    letter-spacing: 2px; /* Rozsunięcie liter */
-    line-height: 1.5;
-
-
-}
-
-h2 {
-    font-size: 2em; /* Zmniejszenie H2 względem H1 */
-    margin: 15px 0; /* Mniejsze marginesy niż dla H1 */
-    text-align: center; /* Wyśrodkowanie podtytułu */
-    color: #34495e; /* Inny, ciemniejszy kolor */
-}
-
-h3 {
-    font-size: 1.5em; /* Nagłówek H3 dla sekcji */
-    margin: 10px 0; /* Marginesy góra/dół */
-    color: #2c3e50; /* Przyciemniony kolor nagłówka */
-    border-bottom: 2px solid #3498db; /* Podkreślenie nagłówka linią */
-    padding-bottom: 5px; /* Odstęp od dolnej krawędzi */
-}
-
-/* Stylizacja dla akapitów */
-p {
-    font-size: 1.2em; /* Lekko większa czcionka dla akapitów */
-    line-height: 1.7; /* Odstępy między liniami tekstu */
-    margin-bottom: 20px; /* Margines dolny między akapitami */
-    text-align: justify; /* Wyjustowanie tekstu */
-    color: #555; /* Przyjemny szary kolor tekstu */
-    padding: 0 15px; /* Delikatne wcięcie od krawędzi */
-}
-
-/* Stylizacja dla listy */
-ul {
-    margin: 20px 0; /* Marginesy góra/dół */
-    padding-left: 40px; /* Wcięcie dla punktów listy */
-}
-
-ul li {
-    font-size: 1.1em; /* Rozmiar tekstu dla punktów listy */
-    margin-bottom: 10px; /* Odstępy między punktami listy */
-    color: #555; /* Kolor tekstu punktów */
-    list-style-type: square; /* Styl punktów listy */
-}
-
-/* Stylizacja nagłówka (header) */
-header {
-    background-color: #3498db; /* Tło nagłówka */
-    padding: 1% 1%; /* Góra/dół margines w nagłówku */
-    text-align: center; /* Wyśrodkowanie zawartości w nagłówku */
-    color: white; /* Kolor tekstu w nagłówku */
-}
-
-/* Stylizacja stopki */
-footer {
-    text-align: center; /* Wyśrodkowanie tekstu w stopce */
-    margin-top: 40px; /* Większy margines od treści */
-    font-size: 0.9em; /* Mniejszy rozmiar czcionki */
-    color: #777; /* Przygaszony kolor tekstu */
-    background-color: #2c3e50; /* Ciemne tło stopki */
-    padding: 20px; /* Wewnętrzne marginesy w stopce */
-}
-
-footer a {
-    text-decoration: none; /* Brak podkreślenia linku */
-    color: #ecf0f1; /* Jasny kolor linku */
-}
-
-/* Dodatkowa stylizacja dla linków */
-a {
-    color: #3498db; /* Kolor linków */
-    text-decoration: none; /* Brak podkreślenia */
-}
-
-a:hover {
-    text-decoration: underline; /* Podkreślenie po najechaniu */
-}
-
-/* Stylizacja dla main (główna część strony) */
-main {
-    padding: 20px; /* Wewnętrzne marginesy */
-    max-width: 1200px; /* Maksymalna szerokość treści */
-    margin: 0 auto; /* Wyśrodkowanie całej treści */
-    background-color: #fff; /* Białe tło treści */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* Cień wokół treści */
-    border-radius: 8px; /* Zaokrąglone rogi kontenera */
 }

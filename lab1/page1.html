@@ -3,34 +3,66 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Moja Strona</title>
-  <!-- Link do zewnętrznego arkusza styli -->
-  <link rel="stylesheet" href="page1.css"> <!-- W page2.html zamienisz na page2.css -->
+  <title>Klasyczne Samochody</title>
+  <link rel="stylesheet" href="page1.css">
 </head>
 <body>
-<!-- Nagłówek -->
-<header>
-  <h1>Tytuł Strony (H1)</h1>
-  <h2>Podtytuł Strony (H2)</h2>
-</header>
+<div class="wrapper">
+  <header>
+    <h1>Klasyczne Samochody</h1>
+    <h2>Historia i wyjątkowe modele</h2>
+    <input type="checkbox" id="menu-toggle" class="menu-toggle">
+    <label for="menu-toggle" class="menu-icon">&#9776; Menu</label>
+    <nav>
+      <ul>
+        <li><a href="#marki">Marki</a></li>
+        <li><a href="#modele">Modele</a></li>
+        <li><a href="page2.html">Kopia strony</a></li>
+      </ul>
+    </nav>
+  </header>
 
-<!-- Treść główna -->
-<main>
-  <section>
-    <h3>Nagłówek Sekcji (H3)</h3>
-    <p>To jest pierwszy akapit przykładowej strony. Możesz tutaj napisać cokolwiek chcesz.</p>
-    <p>To jest drugi akapit przykładowej strony. Zawiera on kolejną część tekstu.</p>
-    <ul>
-      <li>Punkt pierwszy listy</li>
-      <li>Punkt drugi listy</li>
-      <li>Punkt trzeci listy</li>
-    </ul>
-  </section>
-</main>
+  <main>
+    <section id="marki">
+      <h3>Najbardziej znane marki</h3>
+      <p>Wśród klasycznych samochodów można znaleźć pojazdy produkowane przez najbardziej prestiżowe marki motoryzacyjne na świecie. Firmy takie jak Mercedes, Porsche, Ferrari i Ford stworzyły modele, które przeszły do historii i pozostają ikonami motoryzacji.</p>
+      <p>Każda z tych marek ma swoją bogatą historię, która przyczyniła się do ich dzisiejszej renomy. Samochody te nie tylko zachwycały pod względem designu, ale także innowacyjnych rozwiązań technologicznych.</p>
+    </section>
 
-<!-- Stopka -->
-<footer>
-  <p><a href="page2.html">Link do duplikatu strony</a> <!-- W page2.html zamienisz na page2.html --></p>
+    <section id="modele">
+      <h3>Wybrane modele</h3>
+      <p>Oto kilka wybitnych modeli samochodów klasycznych, które na zawsze zapisały się w historii:</p>
+      <ul>
+        <li><strong>Mercedes-Benz SL:</strong> Elegancki roadster łączący luksus z wysokimi osiągami, ikona niemieckiej motoryzacji.</li>
+        <li><strong>BMW 635 CSi:</strong> Klasyczne coupé o sportowym charakterze i zaawansowanej technologii.</li>
+        <li><strong>Porsche 911:</strong> Legendarny samochód sportowy znany z wyjątkowego designu i doskonałych osiągów.</li>
+        <li><strong>Datsun 280Z:</strong> Japoński samochód sportowy ceniony za styl i osiągi, prekursor linii Z marki Nissan.</li>
+      </ul>
+
+      <div class="gallery">
+        <div class="horizontal-stack">
+          <figure class="gallery-item horizontal">
+            <img src="images/sl.jpg" alt="Mercedes SL" width="100%">
+          </figure>
+          <figure class="gallery-item horizontal">
+            <img src="images/635.jpg" alt="BMW 635i" width="100%">
+          </figure>
+        </div>
+        <div class="vertical-stack">
+          <figure class="gallery-item vertical">
+            <img src="images/911.jpg" alt="Porsche 911" width="100%">
+          </figure>
+          <figure class="gallery-item vertical">
+            <img src="images/280z.jpg" alt="Nissan 280Z"width="100%">
+          </figure>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<footer id="kontakt">
+  <p>Autor: Hubert Nowak</p>
 </footer>
 </body>
 </html>

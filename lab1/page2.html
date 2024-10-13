@@ -3,59 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Moja Strona</title>
-    <!-- Link do zewnętrznego arkusza styli -->
-    <link rel="stylesheet" href="page2.css"> <!-- W page2.html zamienisz na page2.css -->
+    <title>Klasyczne Samochody</title>
+      <link rel="stylesheet" href="page2.css">
 </head>
 <body>
-<!-- Nagłówek -->
-<header>
-    <p>Aplikacje internetowe 1 Lab 1</p>
+<div class="wrapper">
+    <header>
+        <h1>Klasyczne Samochody</h1>
+        <h2>Historia i wyjątkowe modele</h2>
+        <input type="checkbox" id="menu-toggle" class="menu-toggle">
+        <label for="menu-toggle" class="menu-icon">&#9776; Menu</label>
+        <nav>
+            <ul>
+                <li><a href="#marki">Marki</a></li>
+                <li><a href="#modele">Modele</a></li>
+                <li><a href="page1.html">Kopia strony</a></li>
+            </ul>
+        </nav>
+    </header>
 
-</header>
-<div class="navbar">
-    <input type="checkbox" id="menu-toggle">
-    <label for="menu-toggle" class="menu-icon">&#9776;</label>
-    <nav class="menu">
-        <ul>
-            <li><a href="page1.html">Second page</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
+    <main>
+        <section id="marki">
+            <h3>Najbardziej znane marki</h3>
+            <p>Wśród klasycznych samochodów można znaleźć pojazdy produkowane przez najbardziej prestiżowe marki motoryzacyjne na świecie. Firmy takie jak Mercedes, Porsche, Ferrari i Ford stworzyły modele, które przeszły do historii i pozostają ikonami motoryzacji.</p>
+            <p>Każda z tych marek ma swoją bogatą historię, która przyczyniła się do ich dzisiejszej renomy. Samochody te nie tylko zachwycały pod względem designu, ale także innowacyjnych rozwiązań technologicznych.</p>
+        </section>
+
+        <section id="modele">
+            <h3>Wybrane modele</h3>
+            <p>Oto kilka wybitnych modeli samochodów klasycznych, które na zawsze zapisały się w historii:</p>
+            <ul>
+                <li><strong>Mercedes-Benz SL:</strong> Elegancki roadster łączący luksus z wysokimi osiągami, ikona niemieckiej motoryzacji.</li>
+                <li><strong>BMW 635 CSi:</strong> Klasyczne coupé o sportowym charakterze i zaawansowanej technologii.</li>
+                <li><strong>Porsche 911:</strong> Legendarny samochód sportowy znany z wyjątkowego designu i doskonałych osiągów.</li>
+                <li><strong>Datsun 280Z:</strong> Japoński samochód sportowy ceniony za styl i osiągi, prekursor linii Z marki Nissan.</li>
+            </ul>
+
+            <div class="gallery">
+                <div class="horizontal-stack">
+                    <figure class="gallery-item horizontal">
+                        <img src="images/sl.jpg" alt="Mercedes SL" width="100%">
+                    </figure>
+                    <figure class="gallery-item horizontal">
+                        <img src="images/635.jpg" alt="BMW 635i" width="100%">
+                    </figure>
+                </div>
+                <div class="vertical-stack">
+                    <figure class="gallery-item vertical">
+                        <img src="images/911.jpg" alt="Porsche 911" width="100%">
+                    </figure>
+                    <figure class="gallery-item vertical">
+                        <img src="images/280z.jpg" alt="Nissan 280Z"width="100%">
+                    </figure>
+                </div>
+            </div>
+        </section>
+    </main>
 </div>
-<!-- Treść główna -->
-<main>
-    <section>
 
-        <h1>Tytuł Strony (H1)</h1>
-        <h2>Podtytuł Strony (H2)</h2>
-        <h3>Nagłówek Sekcji (H3)</h3>
-        <img src="images/sl.jpg" alt="Mercedes SL" class="responsive-img">
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi quis ullamcorper sem.
-            Maecenas nec cursus massa, eleifend placerat arcu. Suspendisse aliquet urna et nunc mattis vehicula.
-            Suspendisse consequat at neque a ultricies. Vivamus blandit nunc at leo tincidunt, vel maximus purus placerat.
-            Nulla consequat rutrum quam, non convallis lectus iaculis vel. Nulla sagittis odio eros.
-            Nam convallis ex sit amet dolor faucibus, quis commodo sapien aliquet.</p>
-        <p>Cras non purus enim. Nulla placerat libero eu eros dignissim, eget mollis nibh elementum.
-            Nam non elit fringilla, posuere ipsum eleifend, condimentum dui.
-            Morbi non finibus tortor. Sed a turpis non elit accumsan faucibus at ac diam.
-            Phasellus finibus massa vitae enim sodales volutpat. Phasellus mi mi, cursus quis mauris vitae, rhoncus faucibus quam</p>
-        <img src="images/911.jpg" alt="Porsche 911" class="responsive-img">
-        <ul>
-            <li>Punkt pierwszy listy</li>
-            <li>Punkt drugi listy</li>
-            <li>Punkt trzeci listy
-            sdasdas</li>
-        </ul>
-        <a href="page1.html">Link do duplikatu strony</a>
-    </section>
-</main>
-
-<!-- Stopka -->
-<footer>
-    <p> Autor Hubert Nowak<!-- W page2.html zamienisz na page2.html --></p>
+<footer id="kontakt">
+    <p>Autor: Hubert Nowak</p>
 </footer>
 </body>
 </html>
