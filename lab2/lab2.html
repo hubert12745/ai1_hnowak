@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task List</title>
+    <link rel="stylesheet" href="lab2.css">
+</head>
+<body>
+<main>
+    <header>
+        <label for="search"></label><input type="text" id="search" placeholder="Search tasks...">
+    </header>
+    <div id="task-container">
+        <ul id="task-list">
+<!--            <li>-->
+<!--                <span class="task-text">Buy groceries</span>-->
+<!--                <span class="task-deadline">2023-10-10</span>-->
+<!--                <button class="delete-task">&times;</button>-->
+<!--            </li>-->
+<!--            <li>-->
+<!--                <span class="task-text">Finish project report</span>-->
+<!--                <span class="task-deadline">2023-10-15</span>-->
+<!--                <button class="delete-task">&times;</button>-->
+<!--            </li>-->
+<!--            <li>-->
+<!--                <span class="task-text">Call the plumber</span>-->
+<!--                <span class="task-deadline">2023-10-20</span>-->
+<!--                <button class="delete-task">&times;</button>-->
+<!--            </li>-->
+        </ul>
+
+    </div>
+    <div id="new-task">
+        <span id="task-input" contenteditable="true" data-placeholder="New task..."></span>
+        <label for="task-deadline"></label><input type="date" id="task-deadline">
+        <button id="add-task">Add Task</button>
+    </div>
+</main>
+<script src="lab2.js"></script>
+</body>
+</html>
