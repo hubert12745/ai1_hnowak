@@ -130,3 +130,26 @@ main {
 mark {
     background-color: yellow;
 }
+/* Add this to your lab2.css file */
+
+.task-text {
+    display: inline; /* Adjusts to content size */
+    padding: 2px;
+    border: 1px solid transparent;
+}
+
+.task-text.editing {
+    border: 1px solid #ccc; /* Outline when editing */
+}
+
+.task-deadline-text {
+    display: inline-block;
+    width: 100px; /* Fixed width */
+    padding: 2px;
+    border: 1px solid transparent;
+    text-align: center;
+}
+
+.task-deadline {
+    display: none;
+}
