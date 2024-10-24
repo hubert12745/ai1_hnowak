@@ -25,16 +25,21 @@ class Todo {
     }
 
     searchTask(searchText) {
-        const filteredTasks = this.tasks.filter(task => task.text.toLowerCase().includes(searchText));
+        const filteredTasks = this.tasks.map(task => {
+            const regex = new RegExp(`(${searchText})`, 'gi');
+            const highlightedText = task.text.replace(regex, '<mark>$1</mark>');
+            return { ...task, highlightedText };
+        });
         this.draw(filteredTasks);
     }
-    draw() {
+
+    draw(filteredTasks = this.tasks) {
         let taskList = document.getElementById('task-list');
         taskList.innerHTML = '';
-        this.tasks.forEach(task => {
+        filteredTasks.forEach(task => {
             let listItem = document.createElement('li');
             listItem.innerHTML = `
-                <span class="task-text" contenteditable="true">${task.text}</span>
+                <span class="task-text" contenteditable="true">${task.highlightedText || task.text}</span>
                 <span class="task-deadline-text">${task.deadline}</span>
                 <input type="date" class="task-deadline" value="${task.deadline}" style="display:none;">
                 <button class="delete-task">&times;</button>
@@ -109,6 +114,7 @@ document.getElementById('task-list').addEventListener('click', function(e) {
         e.target.focus();
     }
 });
+
 
 document.getElementById('search').addEventListener('input', function() {
     const searchText = this.value.trim().toLowerCase();
