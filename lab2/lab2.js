@@ -25,11 +25,13 @@ class Todo {
     }
 
     searchTask(searchText) {
-        const filteredTasks = this.tasks.map(task => {
-            const regex = new RegExp(`(${searchText})`, 'gi');
-            const highlightedText = task.text.replace(regex, '<mark>$1</mark>');
-            return { ...task, highlightedText };
-        });
+        const regex = new RegExp(`(${searchText})`, 'gi');
+        const filteredTasks = this.tasks
+            .filter(task => regex.test(task.text))
+            .map(task => {
+                const highlightedText = task.text.replace(regex, '<mark>$1</mark>');
+                return { ...task, highlightedText };
+            });
         this.draw(filteredTasks);
     }
 
@@ -100,23 +102,13 @@ document.getElementById('task-list').addEventListener('blur', function(e) {
     }
 }, true);
 
-document.getElementById('task-list').addEventListener('click', function(e) {
-    if (e.target.classList.contains('delete-task')) {
-        let taskText = e.target.previousElementSibling.previousElementSibling.previousElementSibling.textContent;
-        todo.removeTask(taskText);
-    } else if (e.target.classList.contains('task-deadline-text')) {
-        e.target.style.display = 'none';
-        e.target.nextElementSibling.style.display = 'inline';
-        e.target.nextElementSibling.focus();
-    } else if (e.target.classList.contains('task-text')) {
-        e.target.setAttribute('contenteditable', 'true');
-        e.target.classList.add('editing');
-        e.target.focus();
-    }
-});
-
-
 document.getElementById('search').addEventListener('input', function() {
     const searchText = this.value.trim().toLowerCase();
     todo.searchTask(searchText);
+});
+document.getElementById('task-input').addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') {
+        e.preventDefault(); // Prevents the default action of the Enter key
+        document.getElementById('add-task').click(); // Triggers the click event on the Add Task button
+    }
 });
