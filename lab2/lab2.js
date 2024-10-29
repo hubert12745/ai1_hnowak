@@ -1,15 +1,18 @@
 class Todo {
     constructor() {
         this.tasks = [];
+        this.loadTasks();
     }
 
     addTask(taskText, deadline) {
         this.tasks.push({ text: taskText, deadline: deadline });
+        this.saveTasks()
         this.draw();
     }
 
     removeTask(taskText) {
         this.tasks = this.tasks.filter(task => task.text !== taskText);
+        this.saveTasks()
         this.draw();
     }
 
@@ -21,6 +24,7 @@ class Todo {
             }
             return task;
         });
+        this.saveTasks()
         this.draw();
     }
 
@@ -49,10 +53,17 @@ class Todo {
             taskList.appendChild(listItem);
         });
     }
+    saveTasks(){
+        localStorage.setItem('tasks', JSON.stringify(this.tasks));
+    }
+    loadTasks(){
+        this.tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+        this.draw();
+    }
 }
 
 let todo = new Todo();
-todo.tasks = [{ text: 'Buy groceries', deadline: '2023-10-10' }, { text: 'Finish project report', deadline: '2023-10-15' }, { text: 'Call the plumber', deadline: '2023-10-20' }];
+// todo.tasks = [{ text: 'Buy groceries', deadline: '2023-10-10' }, { text: 'Finish project report', deadline: '2023-10-15' }, { text: 'Call the plumber', deadline: '2023-10-20' }];
 todo.draw();
 
 document.getElementById('add-task').addEventListener('click', function() {
@@ -108,7 +119,13 @@ document.getElementById('search').addEventListener('input', function() {
 });
 document.getElementById('task-input').addEventListener('keydown', function(e) {
     if (e.key === 'Enter') {
-        e.preventDefault(); // Prevents the default action of the Enter key
-        document.getElementById('add-task').click(); // Triggers the click event on the Add Task button
+        e.preventDefault();
+        document.getElementById('add-task').click();
+    }
+});
+document.getElementById('task-deadline').addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') {
+        e.preventDefault();
+        document.getElementById('add-task').click();
     }
 });
