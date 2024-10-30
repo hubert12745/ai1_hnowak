@@ -6,25 +6,35 @@ class Todo {
 
     addTask(taskText, deadline) {
         this.tasks.push({ text: taskText, deadline: deadline });
-        this.saveTasks()
+        this.saveTasks();
         this.draw();
     }
 
     removeTask(taskText) {
         this.tasks = this.tasks.filter(task => task.text !== taskText);
-        this.saveTasks()
+        this.saveTasks();
         this.draw();
     }
 
-    editTask(oldText, newText, newDeadline) {
+    editTaskText(oldText, newText) {
         this.tasks = this.tasks.map(task => {
             if (task.text === oldText) {
                 task.text = newText;
+            }
+            return task;
+        });
+        this.saveTasks();
+        this.draw();
+    }
+
+    editTaskDeadline(taskText, newDeadline) {
+        this.tasks = this.tasks.map(task => {
+            if (task.text === taskText) {
                 task.deadline = newDeadline;
             }
             return task;
         });
-        this.saveTasks()
+        this.saveTasks();
         this.draw();
     }
 
@@ -53,18 +63,18 @@ class Todo {
             taskList.appendChild(listItem);
         });
     }
-    saveTasks(){
+
+    saveTasks() {
         localStorage.setItem('tasks', JSON.stringify(this.tasks));
     }
-    loadTasks(){
+
+    loadTasks() {
         this.tasks = JSON.parse(localStorage.getItem('tasks')) || [];
         this.draw();
     }
 }
 
 let todo = new Todo();
-// todo.tasks = [{ text: 'Buy groceries', deadline: '2023-10-10' }, { text: 'Finish project report', deadline: '2023-10-15' }, { text: 'Call the plumber', deadline: '2023-10-20' }];
-todo.draw();
 
 document.getElementById('add-task').addEventListener('click', function() {
     const taskInput = document.getElementById('task-input');
@@ -89,27 +99,45 @@ document.getElementById('task-list').addEventListener('click', function(e) {
         e.target.style.display = 'none';
         e.target.nextElementSibling.style.display = 'inline';
         e.target.nextElementSibling.focus();
+    } else if (e.target.classList.contains('task-text')) {
+        e.target.setAttribute('contenteditable', 'true');
+        e.target.classList.add('editing');
+        e.target.focus();
     }
 });
 
 document.getElementById('task-list').addEventListener('blur', function(e) {
-    if (e.target.classList.contains('task-text') || e.target.classList.contains('task-deadline')) {
+    if (e.target.classList.contains('task-text')) {
         let listItem = e.target.parentElement;
-        let oldText = listItem.querySelector('.task-text').textContent;
-        let newText = listItem.querySelector('.task-text').textContent;
-        let newDeadline = listItem.querySelector('.task-deadline').value;
-        if (oldText !== newText || e.target.classList.contains('task-deadline')) {
-            todo.editTask(oldText, newText, newDeadline);
+        let oldText = e.target.getAttribute('data-old-text');
+        let newText = e.target.textContent;
+
+        if (oldText !== newText) {
+            todo.editTaskText(oldText, newText);
         }
-        if (e.target.classList.contains('task-deadline')) {
-            e.target.style.display = 'none';
-            e.target.previousElementSibling.style.display = 'inline';
-            e.target.previousElementSibling.textContent = newDeadline;
-        }
-        if (e.target.classList.contains('task-text')) {
-            e.target.classList.remove('editing');
-            e.target.removeAttribute('contenteditable');
-        }
+
+        e.target.classList.remove('editing');
+        e.target.removeAttribute('contenteditable');
+    }
+}, true);
+
+document.getElementById('task-list').addEventListener('focus', function(e) {
+    if (e.target.classList.contains('task-text')) {
+        e.target.setAttribute('data-old-text', e.target.textContent);
+    }
+}, true);
+
+document.getElementById('task-list').addEventListener('change', function(e) {
+    if (e.target.classList.contains('task-deadline')) {
+        let listItem = e.target.parentElement;
+        let taskText = listItem.querySelector('.task-text').textContent;
+        let newDeadline = e.target.value;
+
+        todo.editTaskDeadline(taskText, newDeadline);
+
+        e.target.style.display = 'none';
+        e.target.previousElementSibling.style.display = 'inline';
+        e.target.previousElementSibling.textContent = newDeadline;
     }
 }, true);
 
@@ -117,12 +145,14 @@ document.getElementById('search').addEventListener('input', function() {
     const searchText = this.value.trim().toLowerCase();
     todo.searchTask(searchText);
 });
+
 document.getElementById('task-input').addEventListener('keydown', function(e) {
     if (e.key === 'Enter') {
         e.preventDefault();
         document.getElementById('add-task').click();
     }
 });
+
 document.getElementById('task-deadline').addEventListener('keydown', function(e) {
     if (e.key === 'Enter') {
         e.preventDefault();
