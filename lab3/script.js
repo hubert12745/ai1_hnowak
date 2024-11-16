@@ -123,6 +123,7 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         });
         if (correct) {
+            console.log("Puzzle completed!");
             new Notification("Puzzle completed!");
         }
     }
