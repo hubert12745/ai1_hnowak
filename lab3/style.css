@@ -1,6 +1,5 @@
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
+    background-color: rgba(0, 106, 255, 0.38);
     margin: 0;
     padding: 20px;
     display: flex;
@@ -8,45 +7,62 @@ body {
     align-items: center;
 }
 
-#map, #rasterMap, #table, #canvas {
+.row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin: 10px 0;
+}
+
+#map {
     width: 600px;
     height: 300px;
-    border: 1px solid #ccc;
     margin-bottom: 20px;
-    background-color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border: 2px solid #3f51b5;
+    border-radius: 10px;
 }
-#table{
+
+#rasterMap, #table, #canvas {
+    width: 600px;
+    height: 300px;
+    border: 2px solid #3f51b5;
+    margin-bottom: 20px;
+    background-color: #ffffff;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+#table {
     position: relative;
 }
+
 button {
-    padding: 10px 20px;
+    padding: 12px 24px;
     margin: 10px;
     border: none;
-    background-color: #007bff;
-    color: #fff;
+    background-color: #3f51b5;
+    color: #ffffff;
     cursor: pointer;
     border-radius: 5px;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, transform 0.3s;
 }
 
 button:hover {
-    background-color: #0056b3;
+    background-color: #303f9f;
+    transform: scale(1.05);
 }
 
 .piece {
-
     position: absolute;
-    border: 1px solid #ccc;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     cursor: grab;
 }
 
 .drop-zone {
     position: absolute;
-
-    border: 1px dashed #ccc;
+    border: 1px dashed #c0c1d3;
 }
+
 .piece, .drop-zone {
     width: 150px;
     height: 75px;
