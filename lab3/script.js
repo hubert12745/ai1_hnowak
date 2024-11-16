@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", function() {
             let lat = position.coords.latitude;
             let lon = position.coords.longitude;
             map.setView([lat, lon]);
-            L.marker([lat, lon]).addTo(map).bindPopup(`Lat: ${lat}, Lon: ${lon}`).openPopup();
+            // L.marker([lat, lon]).addTo(map).bindPopup(`Lat: ${lat}, Lon: ${lon}`).openPopup();
         }, positionError => {
             console.error(positionError);
         });
@@ -71,12 +71,12 @@ document.addEventListener("DOMContentLoaded", function() {
                 for (let x = 0; x < 4; x++) {
                     let dropZone = document.createElement("div");
                     dropZone.className = "drop-zone";
+                    dropZone.id = `drop-${y * 4 + x}`;
                     dropZone.style.position = "absolute";
                     dropZone.style.left = `${x * 150}px`;
                     dropZone.style.top = `${y * 75}px`;
                     dropZone.style.width = "150px";
                     dropZone.style.height = "75px";
-                    dropZone.style.border = "1px solid #000";
                     dropZone.addEventListener("dragover", dragOver);
                     dropZone.addEventListener("drop", drop);
                     canvas.appendChild(dropZone);
@@ -98,12 +98,17 @@ document.addEventListener("DOMContentLoaded", function() {
         let id = event.dataTransfer.getData("text/plain");
         let draggedElement = document.getElementById(id);
         let dropTarget = event.target.closest(".drop-zone");
-        if (dropTarget && dropTarget !== draggedElement) {
+
+        if (dropTarget && dropTarget !== draggedElement && !dropTarget.querySelector(".piece")) {
             dropTarget.appendChild(draggedElement);
+            draggedElement.style.position = "absolute";
+            draggedElement.style.left = "-1px";
+            draggedElement.style.top = "-1px";
+            draggedElement.style.border = "none";
+            // dropTarget.style.border = "none";
         }
         checkCompletion();
     }
-
     function checkCompletion() {
         let pieces = document.querySelectorAll(".drop-zone .piece");
         if (pieces.length !== 16) return;
