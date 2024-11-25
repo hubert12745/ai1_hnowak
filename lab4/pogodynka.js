@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
 
-        const API_key = "Api_key_here";
+        const API_key = "api_key_here";
         const spinner = document.getElementById("spinner");
 
         spinner.style.display = "block";
@@ -16,6 +16,7 @@ document.addEventListener("DOMContentLoaded", function () {
         xhr.onload = function () {
             if (xhr.status === 200) {
                 let currentWeather = JSON.parse(xhr.responseText);
+                console.log("Current Weather Data:", JSON.stringify(currentWeather, null, 2));
                 let iconCode = currentWeather.weather[0].icon;
                 let iconUrl = `http://openweathermap.org/img/wn/${iconCode}@2x.png`;
                 document.getElementById("currentWeather").innerHTML = `
@@ -38,6 +39,7 @@ document.addEventListener("DOMContentLoaded", function () {
         fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city_name}&appid=${API_key}&units=metric`)
             .then(response => response.json())
             .then(forecast => {
+                console.log("Forecast Data:", JSON.stringify(forecast, null, 2));
                 let forecastHTML = "<h2>5 Day Forecast</h2>";
                 forecast.list.forEach(item => {
                     let iconCode = item.weather[0].icon;
