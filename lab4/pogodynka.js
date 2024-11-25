@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
 
-        const API_key = "a7fabe65fb69d6cfedf12a5ae19507d3";
+        const API_key = "Api_key_here";
         const spinner = document.getElementById("spinner");
 
         spinner.style.display = "block";
