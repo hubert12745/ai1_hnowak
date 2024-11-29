@@ -6,12 +6,12 @@ interface StylesDictionary {
 }
 
 const styles: StylesDictionary = {
-    'Style1': 'page1.css',
-    'Style2': 'page2.css',
-    'Style3': 'page3.css'
+    'Styl 1': 'page1.css',
+    'Styl 2': 'page2.css',
+    'Styl 3': 'page3.css'
 };
 
-let currentStyle: string = 'style1';
+let currentStyle: string = 'Styl 1';
 
 function changeStyle(newStyle: string) {
     if (styles[newStyle]) {
@@ -53,4 +53,5 @@ function setupStyleLinks() {
 
 document.addEventListener('DOMContentLoaded', () => {
     setupStyleLinks();
+    changeStyle(currentStyle);
 });

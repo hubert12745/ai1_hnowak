@@ -8,11 +8,11 @@
 var msg = "Hello";
 alert(msg);
 var styles = {
-  'Style1': 'page1.css',
-  'Style2': 'page2.css',
-  'Style3': 'page3.css'
+  'Styl 1': 'page1.css',
+  'Styl 2': 'page2.css',
+  'Styl 3': 'page3.css'
 };
-var currentStyle = 'style1';
+var currentStyle = 'Styl 1';
 function changeStyle(newStyle) {
   if (styles[newStyle]) {
     var oldLink = document.querySelector('link[rel="stylesheet"]');
@@ -52,6 +52,7 @@ function setupStyleLinks() {
 }
 document.addEventListener('DOMContentLoaded', function () {
   setupStyleLinks();
+  changeStyle(currentStyle);
 });
 /******/ })()
 ;
